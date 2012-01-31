@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<style type="text/css">
+			.checklist
+			{
+				margin:10% 40%;
+			}
+		</style>
+		<script type="text/javascript">
+			var aid=new Array();
+			var i,j=0,l,count=0;
+			var x=document.getElementsByTagName("input");
+			function defaultStatus()
+			{
+				for(i=0;i<x.length;i++)
+				{
+					x[i].checked=false;
+				}
+			}
+			function checkList(o)
+			{
+				if(o.id!="none" && count<=3)
+				{
+					aid[j]=o.id;
+					j++;
+					count++;
+					document.getElementById("none").checked=false;
+				}
+				if(o.id=="none")
+				{
+					j=0;
+					count=0;
+					for(i=0;i<x.length-1;i++)
+					{
+						x[i].checked=false;
+					}
+				}
+				if(count>3)
+				{
+					text="Only 3 days can be selected! ";
+					text+="you have already selected: ";
+					for(k=0;k<aid.length-1;k++)
+					{
+						text+=document.getElementById(aid[k]).nextSibling.textContent;
+					}
+					alert(text);
+					o.checked=false;
+				}
+			}
+		</script>
+	</head>
+	<body onload="defaultStatus()">
+		<div class="checklist">
+			<form action="" method="">
+				<input type="checkbox" name="wkdays" id="wd1" onclick="checkList(this)" /> SUNDAY <br />
+				<input type="checkbox" name="wkdays" id="wd2" onclick="checkList(this)" /> MONDAY <br />
+				<input type="checkbox" name="wkdays" id="wd3" onclick="checkList(this)" /> TUESDAY <br />
+				<input type="checkbox" name="wkdays" id="wd4" onclick="checkList(this)" /> WEDNESDAY <br />
+				<input type="checkbox" name="wkdays" id="wd5" onclick="checkList(this)" /> THURSDAY <br />
+				<input type="checkbox" name="wkdays" id="wd6" onclick="checkList(this)" /> FRIDAY <br />
+				<input type="checkbox" name="wkdays" id="wd7" onclick="checkList(this)" /> SATURDAY <br />
+				<input type="checkbox" name="wkdays" id="none" onclick="checkList(this)" /> NONE <br />
+			</form>
+		</div>
+	</body>
+</html>
