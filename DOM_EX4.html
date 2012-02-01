@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<style type="text/css">
+			.checklist
+			{
+				display:block;
+				float:left;
+				width:100%;
+				height:100px;
+				background-color:#f1f5e2;
+				overflow:scroll;
+			}
+			.hid1, .hid2, .hid3, .hid4
+			{
+				margin-left:20px;
+				display:none;
+			}
+		</style>
+		<script type="text/javascript">
+			function defaultStatus()
+			{
+				var x=document.getElementsByClassName("disp1");
+				for(i=0;i<x.length;i++)
+				{
+					x[i].checked=false;
+				}
+			}
+			function displayChildList(o)
+			{
+				if(o.checked==true)
+				{
+					switch(o.id)
+					{
+						case "c1":
+						{
+							document.getElementsByClassName("hid1")[0].style.display="block";
+							break;
+						}
+						case "c2":
+						{
+							document.getElementsByClassName("hid2")[0].style.display="block";
+							break;
+						}
+						case "c3":
+						{
+							document.getElementsByClassName("hid3")[0].style.display="block";
+							break;
+						}
+						case "c4":
+						{
+							document.getElementsByClassName("hid4")[0].style.display="block";
+							break;
+						}
+					}
+				}
+				else
+				{
+					switch(o.id)
+					{
+						case "c1":
+						{
+							document.getElementsByClassName("hid1")[0].style.display="none";
+							break;
+						}
+						case "c2":
+						{
+							document.getElementsByClassName("hid2")[0].style.display="none";
+							break;
+						}
+						case "c3":
+						{
+							document.getElementsByClassName("hid3")[0].style.display="none";
+							break;
+						}
+						case "c4":
+						{
+							document.getElementsByClassName("hid4")[0].style.display="none";
+							break;
+						}	
+					}
+				}
+			}
+		</script>
+	</head>
+	<body onload="defaultStatus()">
+		<div class="checklist">
+			<input type="checkbox" id="c1" class="disp1" onclick="displayChildList(this)" /> COLOR <br />
+				<span class="hid1">
+					<input type="checkbox" /> Red <br />
+					<input type="checkbox" /> Yellow <br />
+					<input type="checkbox" /> Green <br />
+					<input type="checkbox" /> Blue <br />
+				</span>
+			<input type="checkbox" id="c2" class="disp1" onclick="displayChildList(this)" /> MOVIES <br />
+				<span class="hid2">
+					<input type="checkbox" /> Dar <br />
+					<input type="checkbox" /> sir <br />
+				</span>
+			<input type="checkbox" id="c3" class="disp1" onclick="displayChildList(this)" /> DRINKS <br />
+				<span class="hid3">
+					<input type="checkbox" /> Coke <br />
+					<input type="checkbox" /> Pepsi <br />
+					<input type="checkbox" /> Dew <br />
+				</span>
+			<input type="checkbox" id="c4" class="disp1" onclick="displayChildList(this)" /> BIKES <br />
+				<span class="hid4">
+					<input type="checkbox" /> V-rod <br />
+					<input type="checkbox" /> Pulser <br />
+					<input type="checkbox" /> CBZ <br />
+				</span>
+		</div>
+	</body>
+</html>
