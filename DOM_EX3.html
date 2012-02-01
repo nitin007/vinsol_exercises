@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<style type="text/css">
+			#jtable
+			{
+				width:100%;
+				padding:0px;
+				margin:0px;
+			}
+			#butn
+			{
+				float:right;
+			}
+			a
+			{
+				display:none;
+			}
+		</style>
+		<script type="text/javascript">
+			function addNewRow()
+			{
+				var table=document.getElementById("jtable");
+				var row=table.insertRow(-1);
+				var cell1=row.insertCell(0);
+				var cell2=row.insertCell(1);
+				var cell3=row.insertCell(2);
+				var text1=document.createElement("input");
+				var text2=document.createElement("input");
+				var text3=document.createElement("button");
+				var tNode1=document.createTextNode("");
+				var tNode2=document.createTextNode("");
+				var aDiv=document.createElement("div");
+				var aNode1=document.createElement("a");
+				var aNodeTxt1=document.createTextNode("edit");
+				var aNode2=document.createElement("a");
+				var aNodeTxt2=document.createTextNode("delete");
+				aNode1.setAttribute("href","#");
+				aNode1.appendChild(aNodeTxt1);
+				aNode1.style.display="block";
+				aNode2.setAttribute("href","#");
+				aNode2.appendChild(aNodeTxt2);
+				aNode2.style.display="block";
+				aDiv.appendChild(aNode1);
+				aDiv.appendChild(aNode2);
+				text1.type="text";
+				text1.name="gtext1";
+				text2.type="text";
+				text2.name="gtext2";
+				text3.type="button";
+				text3.innerHTML="save";
+				cell1.appendChild(text1);
+				cell2.appendChild(text2);
+				cell3.appendChild(text3);
+				text3.onclick = function save()
+				{
+					tNode1.nodeValue=text1.value;
+					tNode2.nodeValue=text2.value;
+					if(tNode1.nodeValue==""||tNode2.nodeValue=="")
+					{
+						;
+					}
+					else
+					{
+					cell1.replaceChild(tNode1,cell1.childNodes[0]);
+					cell2.replaceChild(tNode2,cell2.childNodes[0]);
+					cell3.replaceChild(aDiv,cell3.childNodes[0]);
+					}
+				}
+				aNode1.onclick = function edit()
+				{
+					cell1.replaceChild(text1,cell1.childNodes[0]);
+					cell2.replaceChild(text2,cell2.childNodes[0]);
+					cell3.replaceChild(text3,cell3.childNodes[0]);
+				}
+				aNode2.onclick = function delRow()
+				{
+					var i=this.parentNode.parentNode.parentNode.rowIndex;
+					table.deleteRow(i);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<table id="jtable" border="1">
+			<tr>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Action</td>
+			</tr>
+		</table>
+		<br />
+		<button type="button" id="butn" onclick="addNewRow()" name="addRow">Add New Row</button>
+	</body>
+</html>
